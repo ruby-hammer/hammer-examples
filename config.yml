@@ -3,4 +3,4 @@
 :root: "Examples::Base"
 :layout: "Examples::Layout"
 :app:
-  :name: "NoName"
+  :name: "Examples"
