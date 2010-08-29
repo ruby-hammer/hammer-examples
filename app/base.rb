@@ -26,6 +26,7 @@ module Examples
                   :record => Struct.new("Data", :name, :sex, :password, :hidden, :description).new
             end
           end
+          li { link_to("Drag").action { self.example = Examples::Dragg::Base.new } }
           li { link_to("passing").action { self.example = Examples::Passing::Base.new } }
           li { link_to('none').action { self.example = nil } }
         end

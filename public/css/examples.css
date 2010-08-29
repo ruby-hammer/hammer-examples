@@ -1,13 +1,5 @@
-.examples-widget-textarea div {
-  height: 36px;
-}
-
-.examples-widget-textarea div {
-  height: 90px;
-}
-
-.examples-widget-textarea textarea {
-  height: 66px;
+.examples-counter-widget a, .examples-ask-counter-widget a, .examples-counters-counter-widget a {
+  padding: 0 0.2em;
 }
 
 .examples-widget-field div {
@@ -22,8 +14,28 @@
   height: 36px;
 }
 
-.examples-counter-widget a, .examples-counters-counter-widget a, .examples-ask-counter-widget a {
-  padding: 0 0.2em;
+.examples-widget-textarea div {
+  height: 36px;
+}
+
+.examples-widget-textarea div {
+  height: 90px;
+}
+
+.examples-widget-textarea textarea {
+  height: 66px;
+}
+
+.examples-dragg-draggable-widget {
+  border: 1px solid silver;
+  width: 200px;
+  line-height: 3em;
+}
+
+.examples-dragg-droppable-widget {
+  border: 1px solid silver;
+  width: 200px;
+  height: 100px;
 }
 
 .examples-base-widget li {
