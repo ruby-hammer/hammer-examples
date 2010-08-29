@@ -288,5 +288,10 @@ document.onReady(function() {
   jQuery(window).bind('hashchange', function(evt) {
     hammer.fire('hash-changed');
   });
+
+  hammer.on('update', function() {
+    Draggable.rescan('.changed');
+    Droppable.rescan('.changed');
+  });
 });
 
