@@ -29,11 +29,11 @@ Hammer = new Class(Observer, {
 
     if(!Hammer.options) throw 'missiong options';
     this.options = Hammer.options;
-    
+
     if (this.options.debug) {
       $dump('Options: ' + JSON.stringify(this.options));
 
-      this.EVENTS.map(function(hammer, event) {        
+      this.EVENTS.map(function(hammer, event) {
         hammer.on(event, hammer.logger.debug.bind(hammer.logger, 'Event "'+event+'" fired'));
       }.curry(this));
     }
@@ -107,6 +107,10 @@ Hammer = new Class(Observer, {
       $('hammer-loading').replace('');
       new Hammer.Message().send();
     };
+  },
+
+  location: function() {
+    return location.hash.replace(/^#/, '')
   }
 });
 
@@ -183,9 +187,9 @@ Hammer.Message = new Class({
   initialize: function() {
     this.session_id = hammer.options.sessionId
     this.context_id = hammer.options.contextId,
-    this.hash = location.hash.replace(/^#/, '')
+    this.hash = hammer.location()
   },
-  
+
   send: function() {
     var jsonString = JSON.stringify(this);
     hammer.logger.debug("sending: " + jsonString);
@@ -292,6 +296,12 @@ document.onReady(function() {
   hammer.on('update', function() {
     Draggable.rescan('.changed');
     Droppable.rescan('.changed');
+  });
+
+  hammer.on('update', function() {
+    $$('a').each(function (a) {
+      a.set('href', '#' + hammer.location())
+    });
   });
 });
 
