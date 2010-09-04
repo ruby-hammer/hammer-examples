@@ -3,7 +3,6 @@ module Examples
     class Base < Hammer::Component::Base
 
       attr_reader :draggables, :droppable
-      children :draggables, :droppable
       after_initialize do
         @draggables = Array.new(3) {|i| Draggable.new(:number => i) }
         @droppable = Droppable.new

@@ -7,7 +7,6 @@ module Examples
       # +counter+ is place where is counter stored or form would been
       attr_reader :numbers, :counter
       changing { attr_writer :counter, :numbers }
-      children :counter
 
       after_initialize do
         self.numbers = []

@@ -10,3 +10,4 @@ pkg
 *.log
 profile.html
 profile.txt
+Gemfile.lock

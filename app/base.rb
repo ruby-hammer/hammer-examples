@@ -2,9 +2,10 @@
 module Examples
   class Base < Hammer::Component::Base
 
-    attr_reader :example
+    attr_reader :example, :other
     changing { attr_writer :example  }
-    children :example
+
+    after_initialize { @other = Examples::Counters::Base.new }
 
     define_widget do
       css do

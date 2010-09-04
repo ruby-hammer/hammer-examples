@@ -5,7 +5,6 @@ module Examples
 
       attr_reader :counters
       alias_method :collection, :counters
-      children :counters
 
       # defines the state after new instance is created
       after_initialize { @counters = []; add }
