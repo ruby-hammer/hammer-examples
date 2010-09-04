@@ -120,15 +120,13 @@ Hammer.Reciever = new Class({
   },
 
   execute: function() {
-    if (this.json.html) this.replaceContent();
-    if (this.json.js) this.evalJs();
-    if (this.json.context_id) this.setContextId();
-    if (this.json.update) this.update();
+    Object.keys(this.json).each(function (scope, key) {
+      if (key == 'js') scope.evalJs();
+      else if (key == 'context_id') scope.setContextId();
+      else if (key == 'update') scope.update();
+      else hammer.logger.error("unknown command: " + key);
+    }.curry(this));
   //    if (this.json.hash) this._setHash();
-  },
-
-  replaceContent: function() {
-    $("hammer-content").update(this.json.html);
   },
 
   evalJs: function() {
@@ -145,14 +143,16 @@ Hammer.Reciever = new Class({
       html: this.json.update
     }).subNodes();
     var places = {};
+    // collecting places
     updates.each(function(update) {
       update.select('span[data-component-replace]').each(function(place) {
         places[place.get('data-component-replace')] = place;
       });
     });
 
-    // remove old .changed classes
+    // updating .changed classes
     components.each('removeClass', 'changed');
+    updates.each('addClass', 'changed');
 
     // building tree from updates
     var tree_updates = new Element('div');
@@ -173,11 +173,13 @@ Hammer.Reciever = new Class({
 
     // moving to dom
     tree_updates.subNodes().each(function(element) {
-      var place = $(element.get('id'))
+      var place_id = element.get('id'), place = $(place_id);
       if (place) {
         place.replace(element);
-      } else {
+      } else if (element.hasClass('root')) {
         $('hammer-content').update(element, 'instead');
+      } else {
+        hammer.logger.error("no place for component with id: " + place_id );
       }
     });
   }
