@@ -8,7 +8,7 @@ module Examples
       needs :collection
       attr_reader :collection
 
-      define_widget do
+      class Widget < widget_class :Widget
         # here we overwrite actions and to add Remove link
         def actions
           link_to('Remove').action { @collection.remove(self) }

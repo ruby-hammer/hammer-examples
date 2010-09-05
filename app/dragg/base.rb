@@ -8,11 +8,13 @@ module Examples
         @droppable = Droppable.new
       end
 
-      define_widget :quickly do
-        h3 'Drag'
+      class Widget < widget_class :Widget
+        def content
+          h3 'Drag'
 
-        draggables.each {|d| render d }
-        render droppable
+          draggables.each {|d| render d }
+          render droppable
+        end
       end
     end
 
@@ -23,7 +25,7 @@ module Examples
       needs :number
       attr_reader :number
 
-      define_widget do
+      class Widget < widget_class :Widget
         css do
           this! do
             border '1px solid silver'
@@ -46,7 +48,7 @@ module Examples
       attr_reader :numbers
       after_initialize { @numbers = [] }
 
-      define_widget do
+      class Widget < widget_class :Widget
         css do
           this! do
             border '1px solid silver'

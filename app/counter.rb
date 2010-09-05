@@ -6,7 +6,7 @@ module Examples
     changing { attr_writer :counter }
     needs :counter => 0
 
-    define_widget do
+    class Widget < widget_class :Widget
       css do
         a { padding '0 0.2em' }
       end

@@ -16,7 +16,7 @@ module Examples
         numbers.inject {|sum, num| sum + num }
       end
 
-      define_widget do
+      class Widget < widget_class :Widget
         def content
           strong 'Numbers: '
           if numbers.blank?

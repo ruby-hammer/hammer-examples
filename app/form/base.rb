@@ -9,7 +9,7 @@ module Examples
       after_initialize { @counter = 0 }
       on_submit { @counter += 1 }
 
-      define_widget do
+      class Widget < widget_class :Widget
         def wrapper_classes
           super << 'form'
         end

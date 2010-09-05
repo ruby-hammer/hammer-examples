@@ -7,7 +7,9 @@ module Examples
 
     after_initialize { @other = Examples::Counters::Base.new }
 
-    define_widget do
+    Data = Struct.new("Data", :name, :sex, :password, :hidden, :description)
+
+    class Widget < widget_class :Widget
       css do
         li { list_style 'square' }
       end
@@ -24,7 +26,7 @@ module Examples
           li do
             link_to("Form").action do
               self.example = Examples::Form::Base.new \
-                  :record => Struct.new("Data", :name, :sex, :password, :hidden, :description).new
+                  :record => Data.new
             end
           end
           li { link_to("Drag").action { self.example = Examples::Dragg::Base.new } }

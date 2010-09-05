@@ -23,7 +23,7 @@ module Examples
 
       end
 
-      define_widget :Widget, :Collection do
+      class Widget < widget_class :Collection
         def after
           link_to('Add counter').action { add }
         end

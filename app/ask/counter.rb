@@ -3,7 +3,7 @@ module Examples
   module Ask
     class Counter < Examples::Counter
 
-      define_widget do
+      class Widget < widget_class :Widget
 
         # adds links to answer the number (counter) or
         # to answer nothing.
