@@ -122,7 +122,7 @@ Hammer.Reciever = new Class({
   execute: function() {
     Object.keys(this.json).each(function (scope, key) {
       if (key == 'js') scope.evalJs();
-      else if (key == 'context_id') scope.setContextId();
+      else if (key == 'context_id') scope.contextId();
       else if (key == 'update') scope.update();
       else hammer.logger.error("unknown command: " + key);
     }.curry(this));
@@ -133,8 +133,12 @@ Hammer.Reciever = new Class({
     eval(this.json.js);
   },
 
-  setContextId: function() {
-    hammer.options.contextId = this.json.context_id;
+  contextId: function() {
+    if (!hammer.options.contextId) {
+      hammer.options.contextId = this.json.context_id;
+    } else if (hammer.options.contextId != this.json.context_id) {
+      hammer.logger.error("difrent context id recieved"); // FIXME deal with it don't just throw error
+    }
   },
 
   update: function() {
