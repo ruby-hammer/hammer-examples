@@ -43,8 +43,8 @@ module Examples
 
     class Droppable < Hammer::Component::Base
       include Hammer::Component::Droppable
-      droppable :onDrop => lambda { |droppable_component| @numbers << droppable_component.number; change! }          
-      
+      droppable :onDrop => lambda { |droppable_component| @numbers << droppable_component.number; change! }
+
       attr_reader :numbers
       after_initialize { @numbers = [] }
 
