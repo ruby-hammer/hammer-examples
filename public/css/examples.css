@@ -1,5 +1,9 @@
-.examples-base-widget li {
+.hammer-component-developer-tools-widget li {
   list-style: square;
+}
+
+.hammer-component-developer-entry-widget {
+  display: block;
 }
 
 .examples-dragg-draggable-widget {
@@ -38,15 +42,11 @@
   height: 66px;
 }
 
-.examples-counter-widget a, .examples-counters-counter-widget a, .examples-ask-counter-widget a {
+.examples-counter-widget a, .examples-ask-counter-widget a, .examples-counters-counter-widget a {
   padding: 0 0.2em;
 }
 
-.hammer-component-developer-tools-widget li {
+.examples-base-widget li {
   list-style: square;
-}
-
-.hammer-component-developer-entry-widget {
-  display: block;
 }
 

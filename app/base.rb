@@ -5,7 +5,10 @@ module Examples
     attr_reader :example, :other
     changing { attr_writer :example  }
 
-    after_initialize { @other = Examples::Counters::Base.new }
+    after_initialize do
+      @other = Examples::Counters::Base.new
+      self.example = Examples::Ask::Base.new
+    end
 
     Data = Struct.new("Data", :name, :sex, :password, :hidden, :description)
 
